@@ -1,0 +1,101 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TramitesComunicacionCRC.MainPage"
+             BackgroundColor="#f5f5f5"
+             Title="">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Gestión CRC" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+
+            <Grid HorizontalOptions="Center" ColumnSpacing="10" RowSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="LoadCsvBtn" 
+                        Text="Cargar Archivo CSV" 
+                        Clicked="OnLoadCsvClicked" 
+                        BackgroundColor="#6200EE" 
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="150"
+                        HeightRequest="80"  
+                        Padding="10"
+                        LineBreakMode="WordWrap"
+                        Grid.Column="0"/>
+
+                <Button x:Name="DownloadExcelBtn" 
+                        Text="Descargar Archivo Excel" 
+                        Clicked="OnDownloadExcelClicked" 
+                        BackgroundColor="#03DAC6" 
+                        TextColor="White"
+                        IsVisible="False"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="150"
+                        HeightRequest="80"  
+                        Padding="10"
+                        LineBreakMode="WordWrap"
+                        Grid.Column="1"/>
+
+                <Button x:Name="ClearBtn" 
+                        Text="Reiniciar Interfaz" 
+                        Clicked="OnClearBtnClicked" 
+                        BackgroundColor="#B00020" 
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="150"
+                        HeightRequest="80"  
+                        Padding="10"
+                        LineBreakMode="WordWrap"
+                        Grid.Column="2"/>
+            </Grid>
+
+            <ActivityIndicator x:Name="Loader"
+                               Color="DarkBlue"
+                               IsVisible="False"
+                               IsRunning="False"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               HeightRequest="50"
+                               WidthRequest="50"/>
+
+            <StackLayout Orientation="Horizontal" BackgroundColor="#EEEEEE" Padding="10" Margin="0,20,0,0" HorizontalOptions="FillAndExpand">
+                <Label Text="Teléfono" FontSize="16" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+                <Label Text="SMS" FontSize="16" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Aplicación" FontSize="16" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Llamada" FontSize="16" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Tipo" FontSize="16" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Fecha Creación" FontSize="16" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Fecha Consultada" FontSize="16" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+            </StackLayout>
+
+            <CollectionView x:Name="DataCollectionView" Margin="0,0,0,20" HorizontalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="5" Padding="10" BackgroundColor="White" CornerRadius="10" HasShadow="True">
+                            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Telefono}" FontSize="16" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Sms}" FontSize="16" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Aplicacion}" FontSize="16" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Llamada}" FontSize="16" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Tipo}" FontSize="16" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Fechacrea}" FontSize="16" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding FechaConsultada}" FontSize="16" HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
